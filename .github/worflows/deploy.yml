@@ -1,0 +1,25 @@
+name: "Testing Worflows"
+run-name: ${{ github.actor }} is learning Github Actions
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  first-workflow:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        qoute: ["Rehan is too Good"]
+
+    env:
+      NODE_ENV: ci
+      PORT: 3000
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: ${{ matrix.qoute }}
+        run: echo Hes way too good
+      - name: Listing repository files
+        run: ls -l
